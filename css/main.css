@@ -1,0 +1,91 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fafafa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App {
+    width: 80%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.todoForm {
+    width: 100%;
+    background: #dfe6e9;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.formFeild {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.formFeild:focus {
+    border: 1.5px solid #853dfa80;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px 0;
+    background: #7a33ec; 
+    font-weight: bold;
+    color: #fff;  
+    border: none; 
+    border-radius: 3px;
+    margin: 8px 0;  
+    cursor: pointer;  
+    box-shadow: 0 1px 3px rgba(104, 104, 104, 0.8);
+}
+
+.submit:hover {
+    background: #8f55eb; 
+    box-shadow: 0 1px 5px rgba(90, 90, 90, 0.8);
+}
+
+.activityList {
+    list-style: none;
+    margin: 8px 0; 
+}
+
+.btn-del {
+    margin: 0 5px;
+    color: #fff;
+    font-weight: 600;
+    background: #ec3933; 
+    border-radius: 3px;
+    border: 1px solid #ec3933;
+}
+
+.btn-del:hover {
+    background: #f5514b; 
+    box-shadow: 0 1px 3px rgba(104, 104, 104, 0.8);    
+    border: 1px solid #f5514b;
+}
+
+.btn-edit {
+    margin: 0 5px;
+    color: #fff;
+    font-weight: 600;
+    background: #33a2ec; 
+    border-radius: 3px;
+    border: 1px solid #33a2ec;
+}
+
+.btn-edit:hover {
+    background: #68c3ff; 
+    box-shadow: 0 1px 3px rgba(104, 104, 104, 0.8);    
+    border: 1px solid #68c3ff;
+}

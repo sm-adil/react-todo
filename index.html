@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo App using React Js</title>
+
+    <!-- Include Custom CSS here -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Include BABEL CDN here -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <!-- Include REACT CDN here -->
+    <script src="https://unpkg.com/react@16.4.2/umd/react.development.js"></script>
+
+    <!-- Include REACT DOM CDN here -->
+    <script src="https://unpkg.com/react-dom@16.4.2/umd/react-dom.development.js"></script>
+
+</head>
+<body>
+    
+    <!-- Main app div -->
+    <div id="app"></div>
+
+    <!-- Script for CRUD operations -->
+    <script type="text/babel">
+
+        class App extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    title: 'Simple CRUD app using REACT JS',
+                    act: 0,
+                    index: '',
+                    datas: []
+                }
+            }
+
+            componentDidMount() {
+                this.refs.activity.focus();
+            }
+
+            // Method for creating and reading a new activity (CREATE/READ)
+            addActivity = (e) => {
+
+                e.preventDefault();
+
+                if (this.refs.activity.value) {
+
+                    let datas = this.state.datas;
+                    let activity = this.refs.activity.value;
+                    
+                    if (this.state.act === 0) {
+                        let data = {
+                            activity
+                        }
+                        datas.push(data);
+                    }
+                    else {
+                        let index = this.state.index;
+                        datas[index].activity = activity; 
+                    }
+
+                    this.setState({
+                        datas: datas,
+                        act: 0
+                    });
+
+                    this.refs.todoForm.reset();
+                    this.refs.activity.focus();
+                }
+                else {
+                    alert("Enter an activity first!!");
+                }
+            }
+
+            // Method for editing activity (UPDATE)
+            editActivity = (i) => {
+
+                let data = this.state.datas[i];
+                this.refs.activity.value = data.activity;
+
+                this.setState({
+                    act: 1,
+                    index: i
+                });
+
+                this.refs.activity.focus();
+            }
+
+            // Method for removing an activity (DELETE)
+            removeActivity = (i) => {
+
+                let datas = this.state.datas;
+                datas.splice(i, 1);
+
+                this.setState({
+                    datas: datas
+                });
+
+                this.refs.todoForm.reset();
+                this.refs.activity.focus();
+            }
+
+            render() {
+                
+                let datas = this.state.datas;
+
+                return (
+                    <div className="App">
+                        
+                        <h1>{ this.state.title }</h1>
+
+                        <form ref="todoForm" className="todoForm">
+                            <input type="text" ref="activity" className="formFeild" placeholder="Enter an activity...." />
+                            <button onClick={ (e) => this.addActivity(e) } className="submit">Add an activity</button>
+                        </form>
+
+                        <pre>
+                            { datas.map((data, i) => 
+                                <li key={i} className="activityList">
+                                    { i + 1 }. { data.activity }
+                                    <button onClick={ () => this.removeActivity(i)} className="btn-del">Remove</button>
+                                    <button onClick={ () => this.editActivity(i)} className="btn-edit">Edit</button>
+                                </li>
+                            )}
+                        </pre>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+
+</body>
+</html>
