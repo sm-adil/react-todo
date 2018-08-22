@@ -6,6 +6,7 @@ This may not be the best practical example of a REACT CRUD app, but this is my f
 All the React libraries are imported into the project using CDN links (Both React and ReactDOM are available over a CDN)
 
 REACT : https://unpkg.com/react@16/umd/react.development.js
+
 REACTDOM : https://unpkg.com/react-dom@16/umd/react-dom.development.js
 
 Using JSX and ES6 we can be more productive while working with React. But the JSX syntax and ES6, are not supported in all the browsers.
